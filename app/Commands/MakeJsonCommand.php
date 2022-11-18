@@ -49,11 +49,14 @@ class MakeJsonCommand extends Command
             $items->push([
                 'title' => (string) $item->title,
                 'link' => (string) $item->link,
+                'description' => (string) $item->description,
                 'date' => Carbon::parse($item->pubDate)->toDateString(),
             ]);
         }
 
-        Storage::put('note_pcs_miraizu.json', $items->toJson());
+        $this->info($items->toJson(JSON_PRETTY_PRINT));
+
+        Storage::put('note_pcs_miraizu.json', $items->toJson(JSON_PRETTY_PRINT));
     }
 
     /**
