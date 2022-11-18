@@ -84,10 +84,6 @@ return [
         Illuminate\Notifications\NotificationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        NotificationChannels\Discord\DiscordServiceProvider::class,
-
-        Revolution\DiscordManager\Providers\DiscordManagerServiceProvider::class,
-
         App\Providers\AppServiceProvider::class,
     ],
 ];
