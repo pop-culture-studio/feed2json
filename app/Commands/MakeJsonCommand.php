@@ -49,7 +49,7 @@ class MakeJsonCommand extends Command
             $items->push([
                 'title' => (string) $item->title,
                 'link' => (string) $item->link,
-                'date' => Carbon::parse($item->pubDate)->toDateTimeString(),
+                'date' => Carbon::parse($item->pubDate)->toDateString(),
             ]);
         }
 
