@@ -1,4 +1,4 @@
-name: cost
+name: feed2json
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   cost:
-    name: cost
+    name: feed2json
     runs-on: ubuntu-latest
 
     steps:
