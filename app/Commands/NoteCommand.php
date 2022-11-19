@@ -38,12 +38,18 @@ class NoteCommand extends Command
     {
         $xml = simplexml_load_file($this->url);
 
-        $json = collect($xml->channel?->item)->map(fn ($item) => [
-            'title' => (string) $item->title,
-            'link' => (string) $item->link,
-            'description' => (string) $item->description,
-            'date' => Carbon::parse($item->pubDate)->toDateString(),
-        ])->toJson($this->json_options);
+        $items = collect();
+
+        foreach ($xml->channel?->item as $item) {
+            $items->push([
+                'title' => (string) $item->title,
+                'link' => (string) $item->link,
+                'description' => (string) $item->description,
+                'date' => Carbon::parse($item->pubDate)->toDateString(),
+            ]);
+        }
+
+        $json = $items->toJson($this->json_options);
 
         Storage::put($this->file, $json);
 
