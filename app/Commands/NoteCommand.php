@@ -38,10 +38,6 @@ class NoteCommand extends Command
     {
         $xml = simplexml_load_file($this->url);
 
-        if ($xml === false) {
-            return 1;
-        }
-
         $json = collect($xml->channel?->item)->map(fn ($item) => [
             'title' => (string) $item->title,
             'link' => (string) $item->link,
