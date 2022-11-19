@@ -3,7 +3,7 @@ name: feed2json
 on:
   push:
   schedule:
-    - cron: '0 0 * * *' #UTC
+    - cron: '0 20 * * *' #UTC
 
 jobs:
   cost:
