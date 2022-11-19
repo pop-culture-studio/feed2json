@@ -1,9 +1,5 @@
 <?php
 
-use Discord\WebSockets\Event;
-use Revolution\DiscordManager\Support\Intents;
-use function Revolution\Illuminate\Support\env;
-
 return [
 
     /*
