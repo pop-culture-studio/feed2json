@@ -54,9 +54,12 @@ class MakeJsonCommand extends Command
             ]);
         }
 
-        $this->info($items->toJson(JSON_PRETTY_PRINT));
+        Storage::put(
+            'note_pcs_miraizu.json',
+            $json = $items->toJson(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+        );
 
-        Storage::put('note_pcs_miraizu.json', $items->toJson(JSON_PRETTY_PRINT));
+        $this->info($json);
     }
 
     /**
