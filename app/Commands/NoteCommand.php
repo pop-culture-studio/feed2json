@@ -25,6 +25,10 @@ class NoteCommand extends Command
 
     private string $url = 'https://note.com/pcs_miraizu/rss';
 
+    private string $file = 'note_pcs_miraizu.json';
+
+    private int $json_options = JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+
     /**
      * Execute the console command.
      *
@@ -32,27 +36,20 @@ class NoteCommand extends Command
      */
     public function handle()
     {
-        $items = collect();
-
         $xml = simplexml_load_file($this->url);
 
         if ($xml === false) {
             return 1;
         }
 
-        foreach ($xml->channel->item as $item) {
-            $items->push([
-                'title' => (string) $item->title,
-                'link' => (string) $item->link,
-                'description' => (string) $item->description,
-                'date' => Carbon::parse($item->pubDate)->toDateString(),
-            ]);
-        }
+        $json = collect($xml->channel?->item)->map(fn ($item) => [
+            'title' => (string) $item->title,
+            'link' => (string) $item->link,
+            'description' => (string) $item->description,
+            'date' => Carbon::parse($item->pubDate)->toDateString(),
+        ])->toJson($this->json_options);
 
-        Storage::put(
-            'note_pcs_miraizu.json',
-            $json = $items->toJson(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
-        );
+        Storage::put($this->file, $json);
 
         $this->info($json);
 
