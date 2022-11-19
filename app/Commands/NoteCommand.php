@@ -46,6 +46,8 @@ class NoteCommand extends Command
                 'link' => (string) $item->link,
                 'description' => (string) $item->description,
                 'date' => Carbon::parse($item->pubDate)->toDateString(),
+                'time' => Carbon::parse($item->pubDate)->toTimeString(),
+                'diff' => Carbon::parse($item->pubDate)->locale('ja')->diffForHumans(),
             ]);
         }
 
