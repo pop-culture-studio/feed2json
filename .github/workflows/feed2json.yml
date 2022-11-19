@@ -22,7 +22,7 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --no-progress --optimize-autoloader
       - name: Run
-        run: php arty feed:json
+        run: php artisan feed:json
         env:
           FILESYSTEM_DRIVER: ${{ secrets.FILESYSTEM_DRIVER }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
