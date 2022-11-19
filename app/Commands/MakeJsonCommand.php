@@ -37,11 +37,12 @@ class MakeJsonCommand extends Command
 
     protected function note()
     {
+        $url = 'https://note.com/pcs_miraizu/rss';
         $items = collect();
 
-        $xml = simplexml_load_file('https://note.com/pcs_miraizu/rss');
+        $xml = simplexml_load_file($url);
 
-        if (! $xml) {
+        if ($xml === false) {
             return;
         }
 
