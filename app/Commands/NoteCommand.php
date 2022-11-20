@@ -5,6 +5,7 @@ namespace App\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use LaravelZero\Framework\Commands\Command;
 
 class NoteCommand extends Command
@@ -44,7 +45,7 @@ class NoteCommand extends Command
             $items->push([
                 'title' => (string) $item->title,
                 'link' => (string) $item->link,
-                'description' => (string) $item->description,
+                'description' => $this->description((string) $item->description),
                 'thumbnail' => (string) $item->children('media', true)->thumbnail,
                 'creatorImage' => (string) $item->children('note', true)->creatorImage,
                 'date' => Carbon::parse($item->pubDate)->toDateString(),
@@ -60,6 +61,18 @@ class NoteCommand extends Command
         $this->info($json);
 
         return 0;
+    }
+
+    /**
+     * @param  string  $description
+     * @return string
+     */
+    private function description(string $description): string
+    {
+        return Str::of($description)
+                  ->replace('<br/>', '')
+                  ->replace('>続きをみる<', ' target="_blank">続きをみる<')
+                  ->value();
     }
 
     /**
