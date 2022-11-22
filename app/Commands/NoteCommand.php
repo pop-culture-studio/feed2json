@@ -48,7 +48,7 @@ class NoteCommand extends Command
                 'title' => (string) $item->title,
                 'link' => (string) $item->link,
                 'embed' => $this->embed((string) $item->link),
-                'description' => $this->description((string) $item->description),
+                'description' => $this->description((string) $item->description ?? ''),
                 'thumbnail' => (string) $item->children('media', true)->thumbnail,
                 'creator_image' => (string) $item->children('note', true)->creatorImage,
                 'date' => Carbon::parse($item->pubDate)->toDateString(),
