@@ -45,6 +45,7 @@ class NoteCommand extends Command
             $items->push([
                 'title' => (string) $item->title,
                 'link' => (string) $item->link,
+                'embed' => $this->embed((string) $item->link),
                 'description' => $this->description((string) $item->description),
                 'thumbnail' => (string) $item->children('media', true)->thumbnail,
                 'creatorImage' => (string) $item->children('note', true)->creatorImage,
@@ -73,6 +74,17 @@ class NoteCommand extends Command
                   ->replace('<br/>', '')
                   ->replace('>続きをみる<', ' target="_blank">続きをみる<')
                   ->value();
+    }
+
+    /**
+     * @param  string  $url
+     * @return string
+     */
+    private function embed(string $url): string
+    {
+        return 'https://note.com/embed/notes/'.Str::of($url)
+                                                  ->basename()
+                                                  ->value();
     }
 
     /**
