@@ -24,7 +24,9 @@ class NoteCommand extends Command
      */
     protected $description = 'Command description';
 
-    private string $url = 'https://note.com/pcs_miraizu/rss';
+    private string $rss_url = 'https://note.com/pcs_miraizu/rss';
+
+    private string $embed_url = 'https://note.com/embed/notes/';
 
     private string $file = 'note_pcs_miraizu.json';
 
@@ -37,7 +39,7 @@ class NoteCommand extends Command
      */
     public function handle()
     {
-        $xml = simplexml_load_file($this->url);
+        $xml = simplexml_load_file($this->rss_url);
 
         $items = collect();
 
@@ -82,9 +84,10 @@ class NoteCommand extends Command
      */
     private function embed(string $url): string
     {
-        return 'https://note.com/embed/notes/'.Str::of($url)
-                                                  ->basename()
-                                                  ->value();
+        return Str::of($url)
+                  ->basename()
+                  ->prepend($this->embed_url)
+                  ->value();
     }
 
     /**
