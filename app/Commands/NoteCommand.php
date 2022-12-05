@@ -38,7 +38,7 @@ class NoteCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $xml = simplexml_load_file($this->rss_url);
 

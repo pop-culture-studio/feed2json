@@ -26,7 +26,7 @@ class MakeJsonCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $this->call(NoteCommand::class);
         $this->call(LitalicoHakataCommand::class);

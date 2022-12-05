@@ -16,7 +16,7 @@ trait Litalico
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $response = Http::throw()->get($this->url);
 
@@ -34,7 +34,7 @@ trait Litalico
                 'link' => $this->url.'/'.$item['id'],
                 'description' => $this->description($content_state['blocks']),
                 'thumbnail' => $this->thumbnail($content_state['entityMap']),
-                'date' => $date,
+                'date' => Carbon::parse($date)->toDateString(),
                 'time' => '00:00:00',
                 'diff' => Carbon::parse($date)->locale('ja')->diffForHumans(),
             ];
