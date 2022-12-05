@@ -57,10 +57,9 @@ trait Litalico
      */
     private function description(array $blocks): string
     {
-        $description = collect($blocks)
-            ->pluck('text')
-            ->reject(fn ($item) => blank($item))
-            ->join('');
+        $description = collect($blocks)->pluck('text')
+                                       ->reject(fn ($item) => blank($item))
+                                       ->join('');
 
         return Str::of($description)->replace("\n", '<br>')->value();
     }
