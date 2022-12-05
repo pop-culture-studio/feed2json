@@ -28,7 +28,9 @@ class MakeJsonCommand extends Command
      */
     public function handle()
     {
-        $this->call('feed:note');
+        $this->call(NoteCommand::class);
+        $this->call(LitalicoHakataCommand::class);
+        $this->call(LitalicoKokuraCommand::class);
 
         return 0;
     }

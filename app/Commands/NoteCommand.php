@@ -2,14 +2,17 @@
 
 namespace App\Commands;
 
-use Illuminate\Support\Carbon;
+use App\Commands\Concerns\JsonOptions;
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use LaravelZero\Framework\Commands\Command;
 
 class NoteCommand extends Command
 {
+    use JsonOptions;
+
     /**
      * The signature of the command.
      *
@@ -29,8 +32,6 @@ class NoteCommand extends Command
     private string $embed_url = 'https://note.com/embed/notes/';
 
     private string $file = 'note_pcs_miraizu.json';
-
-    private int $json_options = JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
 
     /**
      * Execute the console command.
