@@ -3,7 +3,6 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\JsonOptions;
-use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
