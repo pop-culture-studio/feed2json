@@ -28,4 +28,14 @@ class LitalicoKokuraCommand extends Command
     private string $url = 'https://snabi.jp/facility/22928/blog_articles';
 
     private string $file = 'snabi_kokura.json';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle(): int
+    {
+        return $this->snabi();
+    }
 }

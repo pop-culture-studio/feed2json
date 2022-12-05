@@ -12,13 +12,15 @@ use Symfony\Component\DomCrawler\Crawler;
 trait Litalico
 {
     /**
-     * Execute the console command.
-     *
      * @return int
      */
-    public function handle(): int
+    public function snabi(): int
     {
-        $response = Http::throw()->get($this->url);
+        $response = Http::get($this->url);
+
+        if ($response->failed()) {
+            return 1;
+        }
 
         $crawler = new Crawler($response->body());
 

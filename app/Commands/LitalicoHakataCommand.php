@@ -28,4 +28,14 @@ class LitalicoHakataCommand extends Command
     private string $url = 'https://snabi.jp/facility/19496/blog_articles';
 
     private string $file = 'snabi_hakata.json';
+
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle(): int
+    {
+        return $this->snabi();
+    }
 }
