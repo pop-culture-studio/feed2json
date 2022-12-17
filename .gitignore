@@ -6,3 +6,4 @@
 /storage
 /builds
 /build
+.phpunit.result.cache
