@@ -70,6 +70,6 @@ trait Litalico
      */
     private function thumbnail(array $entityMap): string
     {
-        return Arr::get(collect($entityMap)->firstWhere('type', 'IMAGE'), 'data.src');
+        return Arr::get(collect($entityMap)->firstWhere('type', 'IMAGE'), 'data.src', '');
     }
 }
