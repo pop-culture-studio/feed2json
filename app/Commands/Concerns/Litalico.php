@@ -11,9 +11,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 trait Litalico
 {
-    /**
-     * @return int
-     */
     public function snabi(): int
     {
         $response = Http::get($this->url);
@@ -51,10 +48,6 @@ trait Litalico
         return 0;
     }
 
-    /**
-     * @param  array  $blocks
-     * @return string
-     */
     private function description(array $blocks): string
     {
         $description = collect($blocks)->pluck('text')
@@ -64,10 +57,6 @@ trait Litalico
         return Str::of($description)->replace("\n", '<br>')->value();
     }
 
-    /**
-     * @param  array  $entityMap
-     * @return string
-     */
     private function thumbnail(array $entityMap): string
     {
         return Arr::get(collect($entityMap)->firstWhere('type', 'IMAGE'), 'data.src', '');

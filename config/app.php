@@ -81,8 +81,6 @@ return [
 
     'providers' => [
         Illuminate\Bus\BusServiceProvider::class,
-        Illuminate\Notifications\NotificationServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class,
 
         App\Providers\AppServiceProvider::class,
     ],
