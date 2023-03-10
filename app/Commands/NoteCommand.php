@@ -75,6 +75,7 @@ class NoteCommand extends Command
         return Str::of($description)
                   ->replace('<br/>', '')
                   ->replace('>続きをみる<', ' target="_blank">続きをみる<')
+                  ->replaceMatches('/<iframe(.*)<\/iframe>/', '')
                   ->value();
     }
 
