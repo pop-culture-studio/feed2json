@@ -57,7 +57,7 @@ class NoteCommand extends Command
             ]);
         }
 
-        $json = $items->toJson($this->json_options);
+        $json = $items->take(10)->toJson($this->json_options);
 
         Storage::put($this->file, $json);
 
