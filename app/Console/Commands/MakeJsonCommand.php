@@ -28,8 +28,6 @@ class MakeJsonCommand extends Command
     public function handle(): int
     {
         $this->call(NoteCommand::class);
-        $this->call(LitalicoHakataCommand::class);
-        $this->call(LitalicoKokuraCommand::class);
 
         return 0;
     }
