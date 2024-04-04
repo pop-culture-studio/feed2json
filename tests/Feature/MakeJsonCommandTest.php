@@ -12,7 +12,7 @@ class MakeJsonCommandTest extends TestCase
      *
      * @return void
      */
-    public function testMakeJsonCommand()
+    public function testMakeJsonCommand(): void
     {
         Storage::fake();
 

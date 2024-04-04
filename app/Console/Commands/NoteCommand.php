@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Commands;
+namespace App\Console\Commands;
 
-use App\Commands\Concerns\JsonOptions;
+use App\Console\Commands\Concerns\JsonOptions;
+use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use LaravelZero\Framework\Commands\Command;
 
 class NoteCommand extends Command
 {

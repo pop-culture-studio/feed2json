@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Commands\Concerns;
+namespace App\Console\Commands\Concerns;
 
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
@@ -16,6 +16,7 @@ trait Litalico
         $response = Http::get($this->url);
 
         if ($response->failed()) {
+            $this->error($response->reason());
             return 1;
         }
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Commands;
+namespace App\Console\Commands;
 
-use LaravelZero\Framework\Commands\Command;
+use Illuminate\Console\Command;
 
 class MakeJsonCommand extends Command
 {

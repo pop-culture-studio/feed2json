@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Commands;
+namespace App\Console\Commands;
 
-use App\Commands\Concerns\JsonOptions;
-use App\Commands\Concerns\Litalico;
-use LaravelZero\Framework\Commands\Command;
+use App\Console\Commands\Concerns\JsonOptions;
+use App\Console\Commands\Concerns\Litalico;
+use Illuminate\Console\Command;
 
-class LitalicoKokuraCommand extends Command
+class LitalicoHakataCommand extends Command
 {
     use JsonOptions;
     use Litalico;
@@ -16,7 +16,7 @@ class LitalicoKokuraCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'feed:kokura';
+    protected $signature = 'feed:hakata';
 
     /**
      * The description of the command.
@@ -25,9 +25,9 @@ class LitalicoKokuraCommand extends Command
      */
     protected $description = 'Command description';
 
-    private string $url = 'https://snabi.jp/facility/22928/blog_articles';
+    private string $url = 'https://snabi.jp/facility/19496/blog_articles';
 
-    private string $file = 'snabi_kokura.json';
+    private string $file = 'snabi_hakata.json';
 
     /**
      * Execute the console command.
