@@ -20,11 +20,11 @@ jobs:
           extensions: mbstring
           coverage: none
       - name: Install Composer dependencies
-        run: composer install --no-dev --no-progress --optimize-autoloader
+        run: composer install --no-dev -q
       - name: Run
         run: php artisan feed:json
         env:
-          FILESYSTEM_DISK: ${{ secrets.FILESYSTEM_DRIVER }}
+          FILESYSTEM_DISK: ${{ secrets.FILESYSTEM_DISK }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
