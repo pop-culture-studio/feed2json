@@ -19,6 +19,6 @@ jobs:
           extensions: mbstring
           coverage: xdebug
       - name: Install Composer dependencies
-        run: composer update --no-progress --optimize-autoloader
+        run: composer update -q
       - name: Test
         run: vendor/bin/phpunit
